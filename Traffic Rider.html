@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Car Racing</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.screen{
+		width: 100%;
+		height: 100vh;
+		position: relative;
+	}
+	.scoreBox{
+		width: 10%;
+		height: 70px;
+		background-color: #0abde3;
+		color: white;
+		position: absolute;
+		top: 5%;
+		left: 10%;
+		text-align: center;
+	}
+
+	.messageBox{
+		width: 50%;
+		height: 80px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		background-color: #ee5253;
+		color: black;
+	}
+
+	.playArea{
+		position: relative;
+		height: 100%;
+		width: 30%;
+		margin: 5px auto;
+		background-color: #222f3e;
+		border:  2px solid black;
+	}
+
+	.car,.enemyCar{
+		position: absolute;
+		background-color: red;
+		width: 50px;
+		height: 70px;
+		left: 0;
+		top: 80%;
+		z-index: 1;
+	}
+	.roadStripes{
+		height: 80px;
+		width: 20px;
+		background-color: white;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		overflow: hidden;
+		}
+
+	.hide{
+		display: none;
+	}
+</style>
+<body>
+
+<div class="screen">
+		
+	<div class="scoreBox">
+		ScoreCard<br><br>
+		Score:
+	</div>
+
+	
+	<div class="messageBox">
+		Click any key to start the gamel
+	</div>
+
+
+	<div class="playArea hide">
+
+	</div>
+
+</div>
+
+<script type="text/javascript" src="Traffic Rider.js"> </script>
+
+</body>
+
+</html>
