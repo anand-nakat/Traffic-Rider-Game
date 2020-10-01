@@ -12,7 +12,7 @@ let key={
 	ArrowLeft:false,
 }
 
-let player={movement:7, plays:false,increaseSpeed:0}
+let player={movement:7, plays:false,increaseSpeed:0,score:0}
 
 document.addEventListener('keydown', function(e){
 e.preventDefault();
@@ -28,6 +28,13 @@ key[e.key]=false;
 //CHECK FOR COLLISION
 function isCollide(player,enemy){
 return !((player.bottom < enemy.top) || (player.top > enemy.bottom) || (player.right < enemy.left) || (player.left > enemy.right))
+}
+
+function endGame(){
+	player.plays=false;
+	
+	messageBox.innerText=`Game Over \n Your final ${player.score} \n Click to play again`;
+	messageBox.classList.remove("hide");
 }
 
 
@@ -61,8 +68,7 @@ function moveEnemyCars(car){
 			if(isCollide(carDimension,itemDimension))
 				{
 					console.log('CAR HIT');
-					/*playArea.classList.add('hide');
-					messageBox.classList.remove('hide');*/
+					endGame();
 			
 				}
 
@@ -84,10 +90,12 @@ function moveEnemyCars(car){
 //IF MESSAGEBOX CLICKED
 messageBox.addEventListener("click",function(){	
 	player.plays=true;
+	player.score=0;
+	player.movement=6;
 
 	//	HIDE BOX AND SHOW GAME AREA
-	playArea.classList.remove('hide');
 	messageBox.classList.add('hide');
+	playArea.innerHTML="";
 
 	//CREATE PLAYER CAR
 	let car=document.createElement("div");
@@ -154,6 +162,11 @@ function startGamePlay(){
 			car.style.top=car.offsetTop + player.movement+"px" ;
 		}
 		
+	if(player.plays)
+		player.score++;
+	scoreBox.innerText=`Score: ${player.score}`;
+	if(player.score%200==0)
+		player.movement+=0.5;
 	 window.requestAnimationFrame(startGamePlay);
 	}
 }
